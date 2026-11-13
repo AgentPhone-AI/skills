@@ -15,7 +15,7 @@ You are an AI agent. AgentPhone gives you your own real phone number — you can
 **MCP server:** `https://mcp.agentphone.ai/mcp`
 **Docs:** [docs.agentphone.ai](https://docs.agentphone.ai) · **Human console:** [agentphone.ai](https://agentphone.ai)
 
-This file is the entry point. Full details live in [`references/rest-api.md`](./references/rest-api.md) (every HTTP endpoint) and [`references/mcp-tools.md`](./references/mcp-tools.md) (the 28 MCP tools).
+This file is the entry point. Full details live in [`references/rest-api.md`](./references/rest-api.md) (every HTTP endpoint) and [`references/mcp-tools.md`](./references/mcp-tools.md) (the 34 MCP tools).
 
 ---
 
@@ -170,7 +170,7 @@ Short tour; see [`references/rest-api.md`](./references/rest-api.md) for full pa
 { "mcpServers": { "agentphone": { "type": "http", "url": "https://mcp.agentphone.ai/mcp" } } }
 ```
 
-On first use it opens a browser to sign in at agentphone.ai (OAuth) — no key to paste. The 28 tools are listed in [`references/mcp-tools.md`](./references/mcp-tools.md). (The server also accepts `Authorization: Bearer sk_live_...` for scripted use.) Note: outbound calls placed via MCP always open by identifying the agent as an AI.
+On first use it opens a browser to sign in at agentphone.ai (OAuth) — no key to paste. The 34 tools are listed in [`references/mcp-tools.md`](./references/mcp-tools.md). (The server also accepts `Authorization: Bearer sk_live_...` for scripted use.) Note: outbound calls placed via MCP always open by identifying the agent as an AI.
 
 ---
 
