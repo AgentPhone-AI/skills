@@ -1,6 +1,6 @@
 {
   "name": "agentphone",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Give AI agents phone numbers, SMS, and voice calls. Skills for making calls, managing numbers, reading messages, and more.",
   "author": {
     "name": "AgentPhone",

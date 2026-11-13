@@ -24,6 +24,7 @@ Give your AI agents phone numbers, SMS, and voice calls — right from Claude Co
 - Buy and manage phone numbers
 - Make AI-powered outbound calls
 - Read SMS conversations and messages
+- Be told when a reply arrives, without polling for it
 - Set up webhooks for inbound events
 - Check account usage and limits
 - List available voices for agents

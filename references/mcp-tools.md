@@ -27,6 +27,7 @@ On first use it opens a browser to sign in at agentphone.ai (OAuth). No API key 
 ## Messages
 - **send_message** — send SMS/iMessage, or **react** to a message. Sender: `agent_id` / `number_id` / `from_number`. Send: `to_number`, `body`, `media_url(s)`, `reply_to_message_id`, `send_style` (iMessage effect). React: set `reaction` (a classic tapback — `love`/`like`/`dislike`/`laugh`/`emphasize`/`question` — or a single emoji like `🔥`) + `react_to_message_id`; then `to_number`/`body` aren't needed. Reactions work on iMessage, and on WhatsApp for WhatsApp-bound messages (see the REST reaction endpoint for details).
 - **get_messages** — messages for a number (`number_id`, `limit`).
+- **watch_messages** — be told when a message arrives on your numbers, instead of calling `get_messages` again and again (`number_ids`: 1 to 50 number IDs, all in one call). This conversation is then told about each new message on a watched number, if this client can be (the tool says if it can't), and you read it with `get_messages`. A watch lasts until 24 hours pass with no new message on that number; calling again extends it. See [Waiting for a reply](../SKILL.md#waiting-for-a-reply).
 
 ## Conversations
 - **list_conversations** — threads (`agent_id` filter, `limit`, `offset`).
