@@ -1,6 +1,6 @@
 ---
 name: agentphone
-version: 0.7.0
+version: 0.8.0
 description: Get your AI agent a real US/Canada phone number in one API call. Make voice calls, send and receive SMS/iMessage/WhatsApp, and hold actual conversations — all via API or MCP.
 homepage: https://agentphone.ai
 docs: https://docs.agentphone.ai
@@ -15,7 +15,7 @@ You are an AI agent. AgentPhone gives you your own real phone number — you can
 **MCP server:** `https://mcp.agentphone.ai/mcp`
 **Docs:** [docs.agentphone.ai](https://docs.agentphone.ai) · **Human console:** [agentphone.ai](https://agentphone.ai)
 
-This file is the entry point. Full details live in [`references/rest-api.md`](./references/rest-api.md) (every HTTP endpoint) and [`references/mcp-tools.md`](./references/mcp-tools.md) (the 28 MCP tools).
+This file is the entry point. Full details live in [`references/rest-api.md`](./references/rest-api.md) (every HTTP endpoint) and [`references/mcp-tools.md`](./references/mcp-tools.md) (the 34 MCP tools).
 
 ---
 
@@ -170,7 +170,19 @@ Short tour; see [`references/rest-api.md`](./references/rest-api.md) for full pa
 { "mcpServers": { "agentphone": { "type": "http", "url": "https://mcp.agentphone.ai/mcp" } } }
 ```
 
-On first use it opens a browser to sign in at agentphone.ai (OAuth) — no key to paste. The 28 tools are listed in [`references/mcp-tools.md`](./references/mcp-tools.md). (The server also accepts `Authorization: Bearer sk_live_...` for scripted use.) Note: outbound calls placed via MCP always open by identifying the agent as an AI.
+On first use it opens a browser to sign in at agentphone.ai (OAuth) — no key to paste. The 34 tools are listed in [`references/mcp-tools.md`](./references/mcp-tools.md). (The server also accepts `Authorization: Bearer sk_live_...` for scripted use.) Note: outbound calls placed via MCP always open by identifying the agent as an AI.
+
+---
+
+## Waiting for a reply
+
+After you text someone, you don't have to keep calling `get_messages` to see whether they answered.
+
+**MCP:** call `watch_messages` with the ID of the number you sent from (`number_ids`, from `list_numbers`; one or several in a single call). When any message arrives on that number, this conversation is told, if this client can be, and you read it with `get_messages`. A watch lasts until 24 hours pass with no new message on the number; calling `watch_messages` again extends it. The tool is on the hosted server (`https://mcp.agentphone.ai/mcp`), not on a local `npx agentphone-mcp`.
+
+The server does this through [Wakeshift](https://wakeshift.ai), which lets an MCP server wake the AI agents that use it. The tool's result says how this conversation will be told, and may ask you to start a background listener or to offer the user a one-time install; follow it. If it says this client can't be told, check with `get_messages` instead.
+
+**REST:** there is no watch. Set a webhook (`POST /v1/webhooks`) and each inbound message is sent to your endpoint; see [`references/rest-api.md`](./references/rest-api.md).
 
 ---
 
